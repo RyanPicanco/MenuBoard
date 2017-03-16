@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>MenuBoard Fragment</title>
+</head>
+<body>
+<div th:fragment="menuBoard">
+    <div data-ng-app="menu-board" data-ng-controller="instanceController" id="menu-board-container">
+        <div class="col-sm-6 col-md-4" data-ng-repeat="menuItem in menuItems">
+            <div class="col-sm-6">
+                {{menuItem.identifier}}: {{menuItem.menuDescription}}
+            </div>
+            <div class="col-sm-6">
+                <div data-ng-repeat="price in menuItem.pricing">
+                    {{price.size}}: ${{price.cost}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

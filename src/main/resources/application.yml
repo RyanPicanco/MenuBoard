@@ -1,0 +1,12 @@
+spring:
+  thymeleaf:
+    cache: false
+
+security:
+  user:
+    name: admin
+    password: password
+
+mybatis:
+    type-handlers-package: com.picanco.menuboard.repository.mybatis.typehandler
+

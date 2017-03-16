@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>MenuBoard</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script type="text/javascript" th:src="@{/js/lib/jquery-3.1.1.js}"></script>
+        <script type="text/javascript" th:src="@{/js/lib/angular-1.5.6.js}"></script>
+        <script type="text/javascript" th:src="@{/js/lib/bootstrap-3.3.7.js}"></script>
+        <link th:href="@{/css/lib/bootstrap-3.3.7.css}" rel="stylesheet"/>
+        <script type="text/javascript" th:src="@{/js/src/menuBoard.js}"></script>
+    </head>
+    <body>
+        <div th:replace="fragments/menuBoard :: menuBoard">
+        </div>
+    </body>
+</html>

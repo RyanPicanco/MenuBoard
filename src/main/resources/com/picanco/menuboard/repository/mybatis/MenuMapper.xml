@@ -1,0 +1,44 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.picanco.menuboard.repository.mybatis.MenuMapper">
+
+    <resultMap id="menuItemResultMap" type="com.picanco.menuboard.domain.MenuItem">
+        <constructor>
+            <idArg javaType="com.picanco.menuboard.domain.MenuItemIdentifier" column="ID"/>
+            <arg javaType="com.picanco.menuboard.domain.DateRange" resultMap="menuItemDateRangeResultMap"/>
+            <arg javaType="com.picanco.menuboard.domain.Description" column="Description" />
+            <arg javaType="com.picanco.menuboard.domain.ProductImage" column="ImageData" />
+        </constructor>
+        <association property="pricing" resultMap="pricingResultMap" />
+    </resultMap>
+
+    <resultMap id="menuItemDateRangeResultMap" type="com.picanco.menuboard.domain.InstantDateRange">
+        <constructor>
+            <arg javaType="java.time.Instant" column="MenuItemStartDate" />
+            <arg javaType="java.time.Instant" column="MenuItemEndDate"   />
+        </constructor>
+    </resultMap>
+
+    <resultMap id="pricingResultMap" type="com.picanco.menuboard.domain.Pricing">
+        <constructor/>
+        <id column="ID"/>
+        <collection property="prices" ofType="com.picanco.menuboard.domain.EffectivePrice">
+            <constructor>
+                <idArg javaType="com.picanco.menuboard.domain.PriceIdentifier" column="PriceID"/>
+                <arg javaType="com.picanco.menuboard.domain.Size" column="Size"/>
+                <arg javaType="com.picanco.menuboard.domain.DateRange" resultMap="priceDateRangeResultMap"/>
+                <arg javaType="com.picanco.menuboard.domain.Cost" column="Cost"/>
+            </constructor>
+        </collection>
+    </resultMap>
+    
+    <resultMap id="priceDateRangeResultMap" type="com.picanco.menuboard.domain.InstantDateRange">
+        <constructor>
+            <arg javaType="java.time.Instant" column="PriceStartDate" />
+            <arg javaType="java.time.Instant" column="PriceEndDate"   />
+        </constructor>
+    </resultMap>
+
+
+
+</mapper>
